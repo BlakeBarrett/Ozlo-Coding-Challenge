@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ImageViewerViewController.h"
 
 @interface ViewController ()
 
@@ -120,7 +121,14 @@ NSMutableArray *images;
 #pragma mark <UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    UIImageView *imageView = [self imageViewForIndexPath:indexPath];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ImageViewerViewController *imageViewerViewController = (ImageViewerViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ImageViewerScene"];
+    
+    NSString *urlString = imageUrlStrings[indexPath.row];
+    [imageViewerViewController setHeroImageUrlString:urlString];
+    
+    [self presentViewController:imageViewerViewController animated:YES completion:nil];
 }
 
 @end

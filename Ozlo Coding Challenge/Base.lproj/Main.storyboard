@@ -62,6 +62,56 @@
             </objects>
             <point key="canvasLocation" x="431" y="389"/>
         </scene>
+        <!--Image Viewer View Controller-->
+        <scene sceneID="T3S-gi-gs0">
+            <objects>
+                <viewController storyboardIdentifier="ImageViewerScene" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="f9U-5f-qR0" customClass="ImageViewerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cRg-lz-akW"/>
+                        <viewControllerLayoutGuide type="bottom" id="LcE-pa-rch"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Saj-TC-344">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24p-1w-Q92">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="KJu-Lu-DLC">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FhM-OW-sxX">
+                                            <rect key="frame" x="8" y="8" width="584" height="584"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="FhM-OW-sxX" secondAttribute="bottom" id="39L-3C-GM7"/>
+                                        <constraint firstItem="FhM-OW-sxX" firstAttribute="leading" secondItem="KJu-Lu-DLC" secondAttribute="leadingMargin" id="K5Z-OF-uGv"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="FhM-OW-sxX" secondAttribute="trailing" id="edA-di-4bD"/>
+                                        <constraint firstItem="FhM-OW-sxX" firstAttribute="centerX" secondItem="KJu-Lu-DLC" secondAttribute="centerX" id="mCu-Dn-xPr"/>
+                                        <constraint firstItem="FhM-OW-sxX" firstAttribute="top" secondItem="KJu-Lu-DLC" secondAttribute="topMargin" id="nTW-Sb-nYR"/>
+                                        <constraint firstItem="FhM-OW-sxX" firstAttribute="centerY" secondItem="KJu-Lu-DLC" secondAttribute="centerY" id="yjt-NX-WMq"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="24p-1w-Q92" firstAttribute="top" secondItem="Saj-TC-344" secondAttribute="topMargin" id="CWo-0U-Kqy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="24p-1w-Q92" secondAttribute="trailing" constant="-20" id="KiD-vf-qIx"/>
+                            <constraint firstItem="LcE-pa-rch" firstAttribute="top" secondItem="24p-1w-Q92" secondAttribute="bottom" id="Un8-ez-SpG"/>
+                            <constraint firstItem="24p-1w-Q92" firstAttribute="leading" secondItem="Saj-TC-344" secondAttribute="leadingMargin" constant="-20" id="b8s-CD-Vfx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="heroImageView" destination="FhM-OW-sxX" id="jrR-26-Xfb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ad9-7D-R92" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1149" y="389"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Ozlo" width="600" height="314"/>

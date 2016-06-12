@@ -13,6 +13,7 @@
 		25DA1F751D0CB80A0008A214 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25DA1F731D0CB80A0008A214 /* Main.storyboard */; };
 		25DA1F771D0CB80A0008A214 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25DA1F761D0CB80A0008A214 /* Assets.xcassets */; };
 		25DA1F7A1D0CB80A0008A214 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25DA1F781D0CB80A0008A214 /* LaunchScreen.storyboard */; };
+		25DA1F8C1D0CE4940008A214 /* ImageViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DA1F8B1D0CE4940008A214 /* ImageViewerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		25DA1F761D0CB80A0008A214 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25DA1F791D0CB80A0008A214 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25DA1F7B1D0CB80A0008A214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25DA1F8A1D0CE4940008A214 /* ImageViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewerViewController.h; sourceTree = "<group>"; };
+		25DA1F8B1D0CE4940008A214 /* ImageViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,8 @@
 			children = (
 				25DA1F701D0CB80A0008A214 /* ViewController.h */,
 				25DA1F711D0CB80A0008A214 /* ViewController.m */,
+				25DA1F8A1D0CE4940008A214 /* ImageViewerViewController.h */,
+				25DA1F8B1D0CE4940008A214 /* ImageViewerViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25DA1F721D0CB80A0008A214 /* ViewController.m in Sources */,
+				25DA1F8C1D0CE4940008A214 /* ImageViewerViewController.m in Sources */,
 				25DA1F6F1D0CB80A0008A214 /* AppDelegate.m in Sources */,
 				25DA1F6C1D0CB80A0008A214 /* main.m in Sources */,
 			);
