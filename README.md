@@ -4,14 +4,14 @@ Coding challenge for Ozlo. https://www.ozlo.com
 iOS Coding Challenge             
 Write an iPhone app that and lays out a series of images (urls provided) in a UICollectionView.             
 Requirements             
+
 1. Lay out the images in a two-column, variable-height pattern (similar to the grid on
 pinterest.com).
-
 2. The images should be downloaded from their urls lazily, as needed for display. Do not
 pre-load them on launch or cache them in the application bundle.
-
 3. The scrolling should be as smooth as possible.
 Extra
+
 
 1. Tap-to-zoom. Tapping on an image causes it to animate its size to fit the screen. Tap- ping again reverses the animation, returning the image to its original size and position in the grid.             
 2. Cycle through the images to fake the an infinite scroll.             
