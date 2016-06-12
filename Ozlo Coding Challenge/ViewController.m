@@ -19,6 +19,8 @@ static NSString * const reuseIdentifier = @"ozloImageCellReuseIdentifier";
 
 NSArray *imageUrlStrings;
 NSMutableArray *images;
+// the lie we tell the collection view to fake an "inifinite" data set.
+NSInteger numItems;
 
 - (id) init {
     self = [super init];
@@ -50,6 +52,8 @@ NSMutableArray *images;
               @"https://images.njck.co/img?q=jack://i/ios-challenge/img18.jpeg",
               @"https://images.njck.co/img?q=jack://i/ios-challenge/img19.jpeg", nil];
     
+    numItems = imageUrlStrings.count;
+    
     [self.imagesCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     self.imagesCollectionView.delegate = self;
@@ -71,8 +75,12 @@ NSMutableArray *images;
 
 #pragma mark load and cache image
 
+- (NSInteger) wrappedIndexForIndexPath:(NSIndexPath *)indexPath {
+    return indexPath.row % imageUrlStrings.count;
+}
+
 - (UIImageView *)imageViewForIndexPath:(NSIndexPath *)indexPath {
-    NSInteger index = (indexPath.row % imageUrlStrings.count);
+    NSInteger index = [self wrappedIndexForIndexPath:indexPath];
     
     UIImageView *imageView;
     if (index >= images.count) {
@@ -99,7 +107,8 @@ NSMutableArray *images;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return imageUrlStrings.count;
+//    return imageUrlStrings.count;
+    return numItems;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -134,10 +143,42 @@ NSMutableArray *images;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ImageViewerViewController *imageViewerViewController = (ImageViewerViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ImageViewerScene"];
     
-    NSString *urlString = imageUrlStrings[indexPath.row];
+    NSString *urlString = imageUrlStrings[[self wrappedIndexForIndexPath:indexPath]];
     [imageViewerViewController setHeroImageUrlString:urlString];
     
     [self presentViewController:imageViewerViewController animated:YES completion:nil];
 }
+
+-(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    float maxContentOffsetHeight = ceil(scrollView.contentSize.height - self.imagesCollectionView.frame.size.height);
+    float currentY = scrollView.contentOffset.y;
+    
+    if (currentY >= maxContentOffsetHeight) {
+        numItems += imageUrlStrings.count;
+        [self.imagesCollectionView reloadData];
+    }
+}
+
+// Logic based on example here:
+//  https://adoptioncurve.net/archives/2013/07/building-a-circular-gallery-with-a-uicollectionview/
+// I don't really like it, but it "works".
+//-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+//    float maxContentOffsetHeight = ceil(scrollView.contentSize.height - self.imagesCollectionView.frame.size.height);
+//    float currentY = scrollView.contentOffset.y;
+//    
+//    NSIndexPath *newIndexPath;
+//    UICollectionViewScrollPosition position;
+//    
+//    if (currentY >= maxContentOffsetHeight) {
+//        newIndexPath = [NSIndexPath indexPathForItem:1 inSection:0];
+//        position = UICollectionViewScrollPositionTop;
+//    } else if (scrollView.contentOffset.y == 0)  {
+//        
+//        newIndexPath = [NSIndexPath indexPathForItem:(imageUrlStrings.count -2) inSection:0];
+//        position = UICollectionViewScrollPositionBottom;
+//    }
+//    
+//    [self.imagesCollectionView scrollToItemAtIndexPath:newIndexPath atScrollPosition:position animated:NO];
+//}
 
 @end
