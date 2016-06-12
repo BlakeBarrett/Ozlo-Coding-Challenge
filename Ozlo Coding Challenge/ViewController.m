@@ -22,13 +22,11 @@ NSMutableArray *images;
 
 - (id) init {
     self = [super init];
-    
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     images = [NSMutableArray new];
     imageUrlStrings = [[NSArray alloc] initWithObjects: @"https://images.njck.co/img?q=jack://i/ios-challenge/img.jpeg",
@@ -60,6 +58,15 @@ NSMutableArray *images;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    [images removeAllObjects];
+}
+
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations {
+     return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
+- (UIInterfaceOrientation) preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationPortrait;
 }
 
 - (UIImageView *)imageViewForIndexPath:(NSIndexPath *)indexPath {

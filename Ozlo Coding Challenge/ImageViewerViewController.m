@@ -20,27 +20,26 @@ UIImage *image;
     [super viewDidLoad];
     
     [self.heroImageView setImage:image];
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.view setUserInteractionEnabled:YES];
+    [self.view addGestureRecognizer:singleTap];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 -(void)setHeroImageUrlString:(NSString *)urlString {
     NSURL *imageURL = [NSURL URLWithString:urlString];
     NSData *imageData = [[NSData alloc] initWithContentsOfURL:imageURL];
     image = [UIImage imageWithData:imageData];
+}
+
+-(void)onTap{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
