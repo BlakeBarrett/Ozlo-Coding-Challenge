@@ -58,14 +58,8 @@
 		25DA1F691D0CB80A0008A214 /* Ozlo Coding Challenge */ = {
 			isa = PBXGroup;
 			children = (
-				25DA1F6D1D0CB80A0008A214 /* AppDelegate.h */,
-				25DA1F6E1D0CB80A0008A214 /* AppDelegate.m */,
-				25DA1F701D0CB80A0008A214 /* ViewController.h */,
-				25DA1F711D0CB80A0008A214 /* ViewController.m */,
-				25DA1F731D0CB80A0008A214 /* Main.storyboard */,
-				25DA1F761D0CB80A0008A214 /* Assets.xcassets */,
-				25DA1F781D0CB80A0008A214 /* LaunchScreen.storyboard */,
-				25DA1F7B1D0CB80A0008A214 /* Info.plist */,
+				25DA1F821D0CBE800008A214 /* Views */,
+				25DA1F811D0CBE750008A214 /* Controllers */,
 				25DA1F6A1D0CB80A0008A214 /* Supporting Files */,
 			);
 			path = "Ozlo Coding Challenge";
@@ -74,9 +68,31 @@
 		25DA1F6A1D0CB80A0008A214 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				25DA1F6D1D0CB80A0008A214 /* AppDelegate.h */,
+				25DA1F6E1D0CB80A0008A214 /* AppDelegate.m */,
+				25DA1F7B1D0CB80A0008A214 /* Info.plist */,
 				25DA1F6B1D0CB80A0008A214 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		25DA1F811D0CBE750008A214 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				25DA1F701D0CB80A0008A214 /* ViewController.h */,
+				25DA1F711D0CB80A0008A214 /* ViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		25DA1F821D0CBE800008A214 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				25DA1F731D0CB80A0008A214 /* Main.storyboard */,
+				25DA1F761D0CB80A0008A214 /* Assets.xcassets */,
+				25DA1F781D0CB80A0008A214 /* LaunchScreen.storyboard */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
