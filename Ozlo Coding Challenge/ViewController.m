@@ -69,8 +69,10 @@ NSMutableArray *images;
     return UIInterfaceOrientationPortrait;
 }
 
+#pragma mark load and cache image
+
 - (UIImageView *)imageViewForIndexPath:(NSIndexPath *)indexPath {
-    NSInteger index = indexPath.row;
+    NSInteger index = (indexPath.row % imageUrlStrings.count);
     
     UIImageView *imageView;
     if (index >= images.count) {
@@ -93,7 +95,7 @@ NSMutableArray *images;
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return imageUrlStrings.count;
+    return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
