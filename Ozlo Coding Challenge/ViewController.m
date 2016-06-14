@@ -83,7 +83,8 @@ dispatch_queue_t backgroundQueue;
     return indexPath.row % imageUrlStrings.count;
 }
 
-- (UIImageView *)imageViewAt:(NSURL *)url {
+- (UIImageView *)imageViewAt:(NSString *)urlString {
+    NSURL *url = [NSURL URLWithString:urlString];
     UIImageView *imageView;
     NSData *imageData = [[NSData alloc] initWithContentsOfURL:url];
     UIImage *image = [UIImage imageWithData:imageData];
@@ -99,8 +100,7 @@ dispatch_queue_t backgroundQueue;
     if (index >= images.count ||
         images[index] == nil) {
         NSString *imageURLString = imageUrlStrings[index];
-        NSURL *imageURL = [NSURL URLWithString:imageURLString];
-        images[index] = [self imageViewAt:imageURL];
+        images[index] = [self imageViewAt:imageURLString];
     }
     
     return images[index];
