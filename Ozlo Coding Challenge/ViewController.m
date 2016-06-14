@@ -22,6 +22,8 @@ NSMutableArray *images;
 // the lie we tell the collection view to fake an "inifinite" data set.
 NSInteger numItems;
 
+dispatch_queue_t backgroundQueue;
+
 - (id) init {
     self = [super init];
     return self;
@@ -29,6 +31,8 @@ NSInteger numItems;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0ul);
     
     images = [NSMutableArray new];
     imageUrlStrings = [[NSArray alloc] initWithObjects: @"https://images.njck.co/img?q=jack://i/ios-challenge/img.jpeg",
@@ -79,25 +83,27 @@ NSInteger numItems;
     return indexPath.row % imageUrlStrings.count;
 }
 
+- (UIImageView *)imageViewAt:(NSURL *)url {
+    UIImageView *imageView;
+    NSData *imageData = [[NSData alloc] initWithContentsOfURL:url];
+    UIImage *image = [UIImage imageWithData:imageData];
+    
+    imageView = [[UIImageView alloc] initWithImage:image];
+    [imageView setContentMode:UIViewContentModeScaleAspectFit];
+    return imageView;
+}
+
 - (UIImageView *)imageViewForIndexPath:(NSIndexPath *)indexPath {
     NSInteger index = [self wrappedIndexForIndexPath:indexPath];
     
-    UIImageView *imageView;
-    if (index >= images.count) {
+    if (index >= images.count ||
+        images[index] == nil) {
         NSString *imageURLString = imageUrlStrings[index];
         NSURL *imageURL = [NSURL URLWithString:imageURLString];
-        NSData *imageData = [[NSData alloc] initWithContentsOfURL:imageURL];
-        UIImage *image = [UIImage imageWithData:imageData];
-        
-        imageView = [[UIImageView alloc] initWithImage:image];
-        [imageView setContentMode:UIViewContentModeScaleAspectFit];
-        
-        images[index] = imageView;
-    } else {
-        imageView = images[index];
+        images[index] = [self imageViewAt:imageURL];
     }
-
-    return imageView;
+    
+    return images[index];
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -107,15 +113,18 @@ NSInteger numItems;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//    return imageUrlStrings.count;
     return numItems;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    UIImageView *imageView = [self imageViewForIndexPath:indexPath];
-    cell.backgroundView = imageView;
+    dispatch_async(backgroundQueue, ^{
+        UIImageView *imageView = [self imageViewForIndexPath:indexPath];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            cell.backgroundView = imageView;
+        });
+    });
     
     return cell;
 }

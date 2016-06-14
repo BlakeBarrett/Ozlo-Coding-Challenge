@@ -19,7 +19,9 @@ UIImage *image;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.heroImageView setImage:image];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
+        [self.heroImageView setImage:image];
+    });
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap)];
     singleTap.numberOfTapsRequired = 1;
@@ -39,6 +41,7 @@ UIImage *image;
 }
 
 -(void)onTap{
+    self.heroImageView.image = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
