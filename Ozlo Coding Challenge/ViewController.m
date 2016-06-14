@@ -36,25 +36,25 @@ dispatch_queue_t backgroundQueue;
     
     images = [NSMutableArray new];
     imageUrlStrings = [[NSArray alloc] initWithObjects: @"https://images.njck.co/img?q=jack://i/ios-challenge/img.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img1.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img2.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img4.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img5.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img6.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img7.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img8.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img9.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img10.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img11.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img12.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img13.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img14.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img15.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img16.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img17.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img18.jpeg",
-              @"https://images.njck.co/img?q=jack://i/ios-challenge/img19.jpeg", nil];
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img1.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img2.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img4.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img5.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img6.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img7.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img8.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img9.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img10.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img11.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img12.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img13.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img14.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img15.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img16.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img17.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img18.jpeg",
+                       @"https://images.njck.co/img?q=jack://i/ios-challenge/img19.jpeg", nil];
     
     numItems = imageUrlStrings.count;
     
@@ -70,7 +70,7 @@ dispatch_queue_t backgroundQueue;
 }
 
 - (UIInterfaceOrientationMask) supportedInterfaceOrientations {
-     return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 
 - (UIInterfaceOrientation) preferredInterfaceOrientationForPresentation {
@@ -174,15 +174,15 @@ dispatch_queue_t backgroundQueue;
 //-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 //    float maxContentOffsetHeight = ceil(scrollView.contentSize.height - self.imagesCollectionView.frame.size.height);
 //    float currentY = scrollView.contentOffset.y;
-//    
+//
 //    NSIndexPath *newIndexPath;
 //    UICollectionViewScrollPosition position;
-//    
+//
 //    if (currentY >= maxContentOffsetHeight) {
 //        newIndexPath = [NSIndexPath indexPathForItem:1 inSection:0];
 //        position = UICollectionViewScrollPositionTop;
 //    } else if (scrollView.contentOffset.y == 0)  {
-//        
+//
 //        newIndexPath = [NSIndexPath indexPathForItem:(imageUrlStrings.count -2) inSection:0];
 //        position = UICollectionViewScrollPositionBottom;
 //    }
